@@ -33,15 +33,15 @@ const Restaurant = () => {
         <div className="mt-4">
           <h1 className="text-2xl font-bold">Reviews</h1>
           {
-            restaurant?.ratings?.map(review => (
-              <div className="flex-col mt-4 border-b">
+            restaurant?.ratings?.map((review, index) => (
+              <div className="flex-col mt-4 border-b" key={index}>
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
                     <img src={review?.pp} alt={review?.revName} className="w-6 h-6 rounded-full object-contain"/>
                     <h1 className="text-xl font-semibold">{review?.revName ? review?.revName : 'Anonymous'}</h1>
                   </div>
                   <div className="bg-blue-500 rounded-lg text-slate-50 px-2 py-1">
-                    {review?.rating.toString()}⭐
+                    {review?.rating?.toString()}⭐
                   </div>
                 </div>
                 <h1 className="text-xl ">{review?.comment}</h1>

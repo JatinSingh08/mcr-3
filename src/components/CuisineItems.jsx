@@ -19,8 +19,9 @@ const CuisineItems = () => {
               Dishes by {restaurant?.name}
             </Link>
             <div className="flex gap-3">
-              {restaurant?.menu?.map((item) => (
+              {restaurant?.menu?.map((item, index) => (
                 <div className="border-gray-400 p-2"
+                key={index}
                 onClick={() => navigate(`/restaurant/${restaurant?.id}`)}
                 >
                   <img src={item?.imgSrc} alt={item?.name} className="h-40" />

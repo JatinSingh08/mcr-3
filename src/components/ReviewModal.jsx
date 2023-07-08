@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 const ReviewModal = ({ isModalOpen, setIsModalOpen}) => {
   const modalRef = useRef(null);  
   const [review, setReview] = useState({
-    rating: '',
+    rating: null,
     comment: ''
   })
   const { dispatch } = useContext(RestaurantContext);
@@ -31,7 +31,7 @@ const ReviewModal = ({ isModalOpen, setIsModalOpen}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: ADD_REVIEW, payload: {review, resId}})
+    dispatch({ type: ADD_REVIEW, payload: {review: review, resId: resId}})
     closeModal();
   }
 
@@ -46,14 +46,14 @@ const ReviewModal = ({ isModalOpen, setIsModalOpen}) => {
               <label htmlFor="rating" className="flex items-center justify-center gap-4 mb-2">
                 Rating:
                 <select name="rating" id="rating" className='flex items-center justify-between'
-                onChange={(e) => setReview(val => setReview({...val, rating: e.target.value}))}
+                onChange={(e) => setReview(val => setReview({...val, rating: parseInt(e.target.value)}))}
                 val={review?.rating}
                 >
-                  <option value="1" className='border w-4 h-2'>1</option>
-                  <option value="2" className='border w-4 h-2'>2</option>
-                  <option value="3" className='border w-4 h-2'>3</option>
-                  <option value="4" className='border w-4 h-2'>4</option>
-                  <option value="5" className='border w-4 h-2'>5</option>
+                  <option value={1} className='border w-4 h-2'>1</option>
+                  <option value={2} className='border w-4 h-2'>2</option>
+                  <option value={3} className='border w-4 h-2'>3</option>
+                  <option value={4} className='border w-4 h-2'>4</option>
+                  <option value={5} className='border w-4 h-2'>5</option>
                 </select>
               </label>
 
