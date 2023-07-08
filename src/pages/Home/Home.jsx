@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div className="flex-col justify-center items-center">
     <h1 className="text-4xl font-bold underline">Food Ordering App</h1>
-    <h1 className="text-xl font-semibold mt-5">Select your cuisine:</h1>
+    <h1 className="text-2xl font-semibold mt-5">Select your cuisine:</h1>
     <div className="flex gap-4 items-center justify-center mt-4">
       <button
         className="px-5 bg-red-500 text-slate-50 rounded-xl py-1 hover:bg-red-600 transition-all duration-300 ease-in-out"
