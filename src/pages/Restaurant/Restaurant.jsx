@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { restaurantsData } from "../../data/data";
 import ReviewModal from "../../components/ReviewModal";
 
@@ -14,6 +14,8 @@ const Restaurant = () => {
     <div className="relative">
 
       <div className="mx-36 flex-col items-center justify-center text-start">
+      <Link to='/' className="text-4xl mb-4">🔙</Link>
+
         <h1 className="text-4xl font-bold">{restaurant?.name}</h1>
         <div className="flex items-center justify-between">
           <div className="flex-col text-start">
@@ -36,10 +38,10 @@ const Restaurant = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
                     <img src={review?.pp} alt={review?.revName} className="w-6 h-6 rounded-full object-contain"/>
-                    <h1 className="text-xl font-semibold">{review?.revName}</h1>
+                    <h1 className="text-xl font-semibold">{review?.revName ? review?.revName : 'Anonymous'}</h1>
                   </div>
                   <div className="bg-blue-500 rounded-lg text-slate-50 px-2 py-1">
-                    {review?.rating}⭐
+                    {review?.rating.toString()}⭐
                   </div>
                 </div>
                 <h1 className="text-xl ">{review?.comment}</h1>

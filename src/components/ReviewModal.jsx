@@ -1,11 +1,20 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useId, useRef, useState } from 'react'
+import { RestaurantContext } from '../context/restaurant-context';
+import { ADD_REVIEW } from '../reducers/constants';
+import { useParams } from 'react-router-dom';
 
 const ReviewModal = ({ isModalOpen, setIsModalOpen}) => {
   const modalRef = useRef(null);  
+  const [review, setReview] = useState({
+    rating: '',
+    comment: ''
+  })
+  const { dispatch } = useContext(RestaurantContext);
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  const { resId } = useParams();
 
   const handleClickOutside = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
@@ -22,6 +31,8 @@ const ReviewModal = ({ isModalOpen, setIsModalOpen}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch({ type: ADD_REVIEW, payload: {review, resId}})
+    closeModal();
   }
 
   return (
@@ -34,7 +45,10 @@ const ReviewModal = ({ isModalOpen, setIsModalOpen}) => {
             <div className="grid grid-cols-2 md:grid-cols-1 sm:gap-1 gap-2 ">
               <label htmlFor="rating" className="flex items-center justify-center gap-4 mb-2">
                 Rating:
-                <select name="rating" id="rating" className='flex items-center justify-between'>
+                <select name="rating" id="rating" className='flex items-center justify-between'
+                onChange={(e) => setReview(val => setReview({...val, rating: e.target.value}))}
+                val={review?.rating}
+                >
                   <option value="1" className='border w-4 h-2'>1</option>
                   <option value="2" className='border w-4 h-2'>2</option>
                   <option value="3" className='border w-4 h-2'>3</option>
@@ -51,6 +65,8 @@ const ReviewModal = ({ isModalOpen, setIsModalOpen}) => {
                   placeholder="comment here"
                   className="border border-gray-300 rounded-lg p-2 mb-4 w-full mt-1"
                   required
+                  value={review?.comment}
+                  onChange={(e) => setReview(val => setReview({...val, comment: e.target.value}))}
                 />
               </label>
 

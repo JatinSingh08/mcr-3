@@ -1,1 +1,2 @@
 export const SELECT_CUISINE_TYPE = "SELECT_CUISINE_TYPE";
+export const ADD_REVIEW = "ADD_REVIEW";

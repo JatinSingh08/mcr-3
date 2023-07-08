@@ -5,7 +5,7 @@ export const RestaurantContext = createContext();
 const RestaurantProvider = ({ children }) => {
   const [state, dispatch] = useReducer(restaurantReducer, initialState);
 
-  console.log(state.selectedCuisine)
+  console.log(state.restaurants)
   return (
     <RestaurantContext.Provider
       value={{

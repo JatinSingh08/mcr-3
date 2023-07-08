@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { RestaurantContext } from "../context/restaurant-context";
-import { restaurantsData } from "../data/data";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CuisineItems = () => {
   const { state } = useContext(RestaurantContext);
+  const navigate = useNavigate();
 
-  const restaurantCuisines = restaurantsData?.filter(
+  const restaurantCuisines = state?.restaurants?.filter(
     (res) => res.cuisine_id?.toString() === state?.selectedCuisine?.toString()
   );
 
@@ -20,7 +20,9 @@ const CuisineItems = () => {
             </Link>
             <div className="flex gap-3">
               {restaurant?.menu?.map((item) => (
-                <div className="border-gray-400 p-2">
+                <div className="border-gray-400 p-2"
+                onClick={() => navigate(`/restaurant/${restaurant?.id}`)}
+                >
                   <img src={item?.imgSrc} alt={item?.name} className="h-40" />
                   <div>
                     <h1 className="text-lg font-medium ">{item?.name}</h1>
