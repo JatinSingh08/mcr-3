@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { RestaurantContext } from '../../context/restaurant-context'
 import { SELECT_CUISINE_TYPE } from '../../reducers/constants';
 import CuisineItems from '../../components/CuisineItems';
 
 const Home = () => {
   const {dispatch } = useContext(RestaurantContext);
+  
   return (
     <div className="flex-col justify-center items-center">
     <h1 className="text-4xl font-bold underline">Food Ordering App</h1>

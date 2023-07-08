@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 
 const CuisineItems = () => {
   const { state } = useContext(RestaurantContext);
-  console.log("selected cusiine", state.selectedCuisine);
+
   const restaurantCuisines = restaurantsData?.filter(
     (res) => res.cuisine_id?.toString() === state?.selectedCuisine?.toString()
   );
 
-  console.log({ restaurantCuisines });
   return (
     <div>
       {restaurantCuisines?.map((restaurant) => {
