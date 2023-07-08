@@ -14,7 +14,7 @@ const CuisineItems = () => {
     <div>
       {restaurantCuisines?.map((restaurant) => {
         return (
-          <div className="text-start">
+          <div className="text-start" key={restaurant.id}>
             <Link to={`/restaurant/${restaurant?.id}`} className="text-xl font-semibold underline">
               Dishes by {restaurant?.name}
             </Link>
