@@ -39,26 +39,26 @@ const ReviewModal = ({ isModalOpen, setIsModalOpen}) => {
     <div className="fixed top-0 left-0 right-0 z-50 p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full bg-gray-600 bg-opacity-75">
     {isModalOpen && (
       <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50">
-        <div ref={modalRef} className="bg-white w-[20vw] p-2 rounded-lg shadow-lg md:w-[60vw] md:h-[80vh] sm:w-[80vw] ">
+        <div ref={modalRef} className="bg-white w-96 h-80 p-6 rounded-lg shadow-lg m ">
           <h2 className="text-xl font-semibold mb-4 md:mb-2 underline underline-offset-4">Add Review</h2>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-2 md:grid-cols-1 sm:gap-1 gap-2 ">
-              <label htmlFor="rating" className="flex items-center justify-center gap-4 mb-2">
-                Rating:
-                <select name="rating" id="rating" className='flex items-center justify-between'
+              <label htmlFor="rating" className="flex items-center justify-between gap-4 mb-2 text-start ">
+                <span className='text-xl font-medium'>Rating: </span>
+                <select name="rating" id="rating" className='flex items-center justify-between border w-12 h-6'
                 onChange={(e) => setReview(val => setReview({...val, rating: parseInt(e.target.value)}))}
                 val={review?.rating}
                 >
-                  <option value={1} className='border w-4 h-2'>1</option>
-                  <option value={2} className='border w-4 h-2'>2</option>
-                  <option value={3} className='border w-4 h-2'>3</option>
-                  <option value={4} className='border w-4 h-2'>4</option>
-                  <option value={5} className='border w-4 h-2'>5</option>
+                  <option value={1} className='border'>1</option>
+                  <option value={2} className='border'>2</option>
+                  <option value={3} className='border'>3</option>
+                  <option value={4} className='border'>4</option>
+                  <option value={5} className='border'>5</option>
                 </select>
               </label>
 
               <label htmlFor="review" className="flex items-center justify-center gap-4 mb-2">
-                Review:
+                <span className='text-xl font-medium'>Rating: </span>
                 <textarea
                   id="review"
                   type="text"
